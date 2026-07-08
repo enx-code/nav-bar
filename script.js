@@ -57,3 +57,35 @@ function playGlassClink() {
 document.querySelectorAll(".pebble-flip").forEach((el) => {
   el.addEventListener("mouseenter", playGlassClink);
 });
+
+// Oval pebbles: flip 180deg around a hinge axis that depends on where on
+// the pebble's border the cursor entered. The hinge line always sits
+// perpendicular to the vector from the pebble's center to the cursor
+// (like a coin tipping over away from wherever it got pushed), so
+// entering from the left/right gives a normal vertical-axis flip,
+// entering from the top/bottom gives a horizontal-axis flip, and any
+// point in between gives a diagonal hinge. --ax/--ay are read by the
+// ".oval-flip" / ".oval-back" rules in style.css.
+document.querySelectorAll(".oval-flip").forEach((el) => {
+  el.addEventListener("mouseenter", (event) => {
+    const rect = el.getBoundingClientRect();
+    const dx = (event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+    const dy = (event.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+
+    // Rotate the center->cursor vector 90deg in-plane to get the hinge axis.
+    let ax = -dy;
+    let ay = dx;
+    const length = Math.hypot(ax, ay);
+    if (length < 0.001) {
+      ax = 0;
+      ay = 1;
+    } else {
+      ax /= length;
+      ay /= length;
+    }
+
+    el.style.setProperty("--ax", ax.toFixed(3));
+    el.style.setProperty("--ay", ay.toFixed(3));
+    playGlassClink();
+  });
+});
