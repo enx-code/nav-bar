@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: 12px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.nav-list {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.nav-item {
+  perspective: 800px;
+}
+
+.nav-flip {
+  position: relative;
+  display: block;
+  width: 120px;
+  height: 46px;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.nav-item:hover .nav-flip {
+  transform: rotateX(180deg);
+}
+
+.nav-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.nav-front {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-back {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(120, 180, 255, 0.35));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    0 4px 20px rgba(80, 160, 255, 0.4);
+  transform: rotateX(180deg);
+}
+
+/* ============= Glass pebble nav ============= */
+
+.pebble-nav {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 14px 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.pebble-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.pebble-item {
+  perspective: 700px;
+}
+
+.pebble-flip {
+  position: relative;
+  display: block;
+  width: 78px;
+  height: 78px;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pebble-item:hover .pebble-flip {
+  transform: rotateY(180deg);
+}
+
+.pebble-item:active .pebble-flip {
+  transform: rotateY(180deg) scale(0.94);
+}
+
+.pebble-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.pebble-front {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.15) 25%, rgba(255, 255, 255, 0.05) 45%),
+    radial-gradient(circle at 65% 75%, rgba(120, 170, 255, 0.35), rgba(255, 255, 255, 0.08) 60%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.15),
+    0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.pebble-back {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(120, 200, 255, 0.15) 45%),
+    radial-gradient(circle at 65% 75%, rgba(90, 220, 255, 0.5), rgba(255, 255, 255, 0.1) 60%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 -6px 12px rgba(0, 60, 120, 0.25),
+    0 6px 22px rgba(80, 200, 255, 0.5);
+  transform: rotateY(180deg);
+}
